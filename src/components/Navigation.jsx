@@ -1,8 +1,10 @@
 import { Fragment, useState } from 'react'
 import { Dialog, Popover, Tab, Transition } from '@headlessui/react'
+import { Link } from "react-router-dom";
 import { Bars3Icon, MagnifyingGlassIcon, ShoppingBagIcon, XMarkIcon } from '@heroicons/react/24/outline'
 import bread from "../components/images/bread.jpeg"
 import bakedGoods from "../components/images/bakedGoods.jpeg"
+import { Outlet } from "react-router-dom";
 
 const navigation = {
   categories: [
@@ -12,7 +14,7 @@ const navigation = {
       featured: [
         {
           name: 'Shop All',
-          href: '#',
+          to: '#',
           imageSrc: bread,
           imageAlt: 'Close up of Basic Tee fall bundle with off-white, ochre, olive, and black tees.',
         },
@@ -21,10 +23,10 @@ const navigation = {
         {
           id: 'clothing',
           items: [
-            { name: 'Sourdough', href: '#' },
-            { name: 'French', href: '#' },
-            { name: 'Ciabatta', href: '#' },
-            { name: 'Focaccia', href: '#' },
+            { name: 'Sourdough', to: 'product/sourdough' },
+            { name: 'French', to: 'product/french' },
+            { name: 'Ciabatta', to: 'product/ciabatta' },
+            { name: 'Focaccia', to: 'product/focaccia' },
           ],
         },
       ],
@@ -45,10 +47,10 @@ const navigation = {
         {
           id: 'clothing',
           items: [
-            { name: 'Chocolate Chip Cookie', href: '#' },
-            { name: 'Japanese Cheesecake', href: '#' },
-            { name: 'Matcha Roll', href: '#' },
-            { name: 'Strawberry Cake', href: '#' },
+            { name: 'Chocolate Chip Cookie', to: 'product/chocolateChipCookie' },
+            { name: 'Japanese Cheesecake', to: 'product/japaneseCheesecake' },
+            { name: 'Matcha Roll', to: 'product/matchaRoll' },
+            { name: 'Strawberry Cake', to: 'product/strawberryCake' },
           ],
         },
       ],
@@ -133,12 +135,12 @@ export default function Example() {
                               <div className="aspect-h-1 aspect-w-1 overflow-hidden rounded-lg bg-gray-100 group-hover:opacity-75">
                                 <img src={item.imageSrc} alt={item.imageAlt} className="object-cover object-center" />
                               </div>
-                              <a href={item.href} className="mt-6 block font-medium text-gray-900">
+                              <Link to={item.to} >
                                 <span className="absolute inset-0 z-10" aria-hidden="true" />
                                 {item.name}
-                              </a>
+                              </Link>
                               <p aria-hidden="true" className="mt-1">
-                                {/* optional comment */}
+                                {/* optional */}
                               </p>
                             </div>
                           ))}
@@ -155,9 +157,9 @@ export default function Example() {
                             >
                               {section.items.map((item) => (
                                 <li key={item.name} className="flow-root">
-                                  <a href={item.href} className="-m-2 block p-2 text-gray-500">
+                                  <Link to={item.to} className="-m-2 block p-2 text-gray-500">
                                     {item.name}
-                                  </a>
+                                  </Link>
                                 </li>
                               ))}
                             </ul>
@@ -171,9 +173,9 @@ export default function Example() {
                 <div className="space-y-6 border-t border-gray-200 px-4 py-6">
                   {navigation.pages.map((page) => (
                     <div key={page.name} className="flow-root">
-                      <a href={page.href} className="-m-2 block p-2 font-medium text-gray-900">
+                      <Link to={page.to} className="-m-2 block p-2 font-medium text-gray-900">
                         {page.name}
-                      </a>
+                      </Link>
                     </div>
                   ))}
                 </div>
@@ -259,10 +261,10 @@ export default function Example() {
                                               className="object-cover object-center"
                                             />
                                           </div>
-                                          <a href={item.href} className="mt-6 block font-medium text-gray-900">
+                                          <Link to={item.to} className="mt-6 block font-medium text-gray-900">
                                             <span className="absolute inset-0 z-10" aria-hidden="true" />
                                             {item.name}
-                                          </a>
+                                          </Link>
                                           <p aria-hidden="true" className="mt-1">
                                             {/* optional comment */}
                                           </p>
@@ -282,9 +284,9 @@ export default function Example() {
                                           >
                                             {section.items.map((item) => (
                                               <li key={item.name} className="flex">
-                                                <a href={item.href} className="hover:text-gray-800">
+                                                <Link to={item.to} className="hover:text-gray-800">
                                                   {item.name}
-                                                </a>
+                                                </Link>
                                               </li>
                                             ))}
                                           </ul>
@@ -302,13 +304,13 @@ export default function Example() {
                   ))}
 
                   {navigation.pages.map((page) => (
-                    <a
+                    <Link
                       key={page.name}
-                      href={page.href}
+                      to={page.to}
                       className="flex items-center text-sm font-medium text-gray-700 hover:text-gray-800"
                     >
                       {page.name}
-                    </a>
+                    </Link>
                   ))}
                 </div>
               </Popover.Group>
@@ -328,6 +330,7 @@ export default function Example() {
             </div>
         </nav>
       </header>
+      <Outlet />
     </div>
   )
 }
