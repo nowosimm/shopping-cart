@@ -1,5 +1,4 @@
 import { useParams } from "react-router-dom";
-import { Outlet } from "react-router-dom";
 
 import sourdough from "./images/sourdough.jpeg"
 import french from "./images/french.jpeg"
@@ -13,25 +12,25 @@ import strawberryCake from "./images/strawberryCake.jpeg"
 
 const products = {
     sourdough: {
-        name: "sourdough loaf",
+        name: "Sourdough Loaf",
         src: sourdough,
         description: "It's from whole foods",
         price: "$8"
     },
     french: {
-        name: "french baguette",
+        name: "French Baguette",
         src: french,
         description: "Not from france",
         price: "$5"
     },
     ciabatta: {
-        name: "ciabatta rolls",
+        name: "Ciabatta Rolls",
         src: ciabatta,
         description: "Good and yummy",
         price: "$8"
     },
     focaccia: {
-        name: "focaccia",
+        name: "Focaccia",
         src: focaccia,
         description: "so yummy mmmmhmmm",
         price: "$11"
@@ -69,9 +68,9 @@ const Product = () => {
     const product = products[productName];
 
     return (
-        <div className="m-10 flex justify-center">
+        <div className="m-20 flex justify-center">
             <div>
-                <img className="rounded-lg h-auto w-160" src={product.src} />
+                <img className="rounded-lg h-auto max-w-lg" src={product.src} />
             </div>
 
             <div className="flex flex-col justify-between max-w-md ml-6 ">

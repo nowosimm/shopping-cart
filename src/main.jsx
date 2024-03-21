@@ -1,11 +1,11 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
-// import App from './App.jsx'
 import Nav from "./components/Navigation";
 import './index.css'
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-// import ProductList from './components/ProductList';
 import Product from './components/Product.jsx';
+import HomePage from './components/HomePage';
+
 
 
 const router = createBrowserRouter([
@@ -14,18 +14,11 @@ const router = createBrowserRouter([
     element: <Nav />,
     children: [
       { path: "product/:productName", element: <Product /> },
+      // { path: "ShoppingCart", element: <ShoppingCart/>},
+      { index: true, element: <HomePage /> },
 
     ]
   },
-  // {
-  //   path: "ProductList",
-  //   element: <ProductList />,
-  // },
-  // {
-  //   path: "product/:productName",
-  //   element: <Product />,
-  // },
-
 ]);
 
 ReactDOM.createRoot(document.getElementById("root")).render(
