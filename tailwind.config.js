@@ -6,4 +6,11 @@ module.exports = {
   plugins: [
     require('@tailwindcss/aspect-ratio'),
   ],
+  theme: {
+    fontFamily: {
+      'cursive' : ['"Liu Jian Mao Cao"', 'cursive'],
+    }
+  } 
 }
+
+
