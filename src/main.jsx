@@ -1,17 +1,17 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
-import Nav from "./components/Navigation";
 import './index.css'
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Product from './components/Product.jsx';
 import HomePage from './components/HomePage';
+import Root from "./components/Root";
 
 
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <Nav />,
+    element: <Root />,
     children: [
       { path: "product/:productName", element: <Product /> },
       // { path: "ShoppingCart", element: <ShoppingCart/>},

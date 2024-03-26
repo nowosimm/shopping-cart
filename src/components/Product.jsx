@@ -79,9 +79,9 @@ const Product = () => {
                     <p className="text-base">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Imperdiet massa tincidunt nunc pulvinar sapien</p>
                 </div>
 
-                <div className="flex justify-between">
-                    <p className="text-base">{product.price}</p>
-                    <button className="text-base">Add to Cart</button>
+                <div className="flex justify-end items-center">
+                    <p className="text-base mr-3">{product.price}</p>
+                    <button className="text-base bg-rose-100 rounded p-1">+ Add to Cart</button>
                 </div>
             </div>
         </div>
