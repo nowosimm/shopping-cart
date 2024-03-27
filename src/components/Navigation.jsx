@@ -326,7 +326,8 @@ export default function Nav({ setShowCart }) {
                     /></Link> */}
 
               {/* Cart */}
-              <div className="ml-4 flow-root lg:ml-6">
+              <div className='justify-end flex flex-1'>
+              <div className="ml-4 flow-root lg:ml-6 self-end ">
                 <a href="#" className="group -m-2 flex items-center p-2" onClick={() => setShowCart(true)}>
                   <ShoppingBagIcon
                       className="h-6 w-6 flex-shrink-0 text-gray-400 group-hover:text-gray-500"
@@ -337,6 +338,9 @@ export default function Nav({ setShowCart }) {
                   <span className="sr-only">items in cart, view bag</span>
                 </a>
               </div>
+                
+              </div>
+
             </div>
           </div>
         </nav>
