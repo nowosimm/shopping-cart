@@ -63,7 +63,10 @@ function classNames(...classes) {
   return classes.filter(Boolean).join(' ')
 }
 
-export default function Nav({ setShowCart }) {
+export default function Nav({ setShowCart, cartContents}) {
+  let cartQuantity = cartContents.length;
+
+
   const [open, setOpen] = useState(false)
 
   return (
@@ -334,7 +337,7 @@ export default function Nav({ setShowCart }) {
                       aria-hidden="true"
                     />
                 
-                  <span className="ml-2 text-sm font-medium text-gray-700 group-hover:text-gray-800">0</span>
+                  <span className="ml-2 text-sm font-medium text-gray-700 group-hover:text-gray-800">{cartQuantity}</span>
                   <span className="sr-only">items in cart, view bag</span>
                 </a>
               </div>

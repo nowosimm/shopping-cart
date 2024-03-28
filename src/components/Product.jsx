@@ -69,8 +69,9 @@ const products = {
         price: 6,
         // quantity: 1,
     }
-
 }
+
+let productIdCounter = 1;
 
 const Product = ({}) => {
     const { productName } = useParams();
@@ -89,7 +90,15 @@ const Product = ({}) => {
         if(quantity < 5) {
             setQuantity(prevQuantity => prevQuantity + 1)
         }
+    }
 
+    function addToCart() {
+        var newItem = { ...product };
+        newItem.id = productIdCounter++;
+        newItem.quantity = quantity;
+        setCartContents([...cartContents, newItem])
+        setQuantity(1)
+        setShowCart(true)
     }
 
     return (
@@ -103,7 +112,7 @@ const Product = ({}) => {
                 <div>
                     <div className="justify-between flex-row flex items-center mb-8">
                         <h1 className="text-2xl max-w-48">{product.name}</h1>
-                        <p className="text-base mr-3">{product.price}</p>
+                        <p className="text-base mr-3">${product.price}</p>
                     </div>
                     <p className="text-base">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Imperdiet massa tincidunt nunc pulvinar sapien</p>
                 </div>
@@ -118,12 +127,7 @@ const Product = ({}) => {
 
                     <button
                             className="text-base bg-rose-200 p-1 w-36  hover:bg-rose-300 rounded-full"
-                            onClick={() => {
-                                product.quantity = quantity;
-                                setCartContents([...cartContents, product])
-                                setQuantity(1)
-                                setShowCart(true)
-                            }}>Add to Cart
+                            onClick={addToCart}>Add to Cart
                     </button>
 
 

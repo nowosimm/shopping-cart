@@ -21,8 +21,12 @@ export default function Root() {
       ])
 
     return <div className="bg-white">
-        <Nav setShowCart={setShowCart} />
-        <ShoppingCart cartContents={cartContents} isOpen={showCart} onClose={setShowCart} />
+        <Nav setShowCart={setShowCart} cartContents={cartContents} />
+        <ShoppingCart 
+            cartContents={cartContents}
+            setCartContents={setCartContents}
+            isOpen={showCart}
+            onClose={setShowCart} />
         <Outlet context={[ cartContents, setCartContents, setShowCart]} />
     </div>
 }

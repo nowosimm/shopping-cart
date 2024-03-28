@@ -1,8 +1,15 @@
-import { Fragment } from 'react'
+import { Fragment, useState } from 'react'
 import { Dialog, Transition } from '@headlessui/react'
 import { XMarkIcon } from '@heroicons/react/24/outline'
 
-export default function CartExample({ cartContents, isOpen, onClose }) {
+export default function ShoppingCart({ cartContents, setCartContents, isOpen, onClose }) {
+
+  let subTotal = 0;
+  cartContents.map((product) => subTotal += (product.quantity * product.price));
+
+  const handleDeleteItem = (id) => {
+    setCartContents(cartContents.filter(item=> item.id !== id));
+  }
 
   return (
     <Transition.Root show={isOpen} as={Fragment}>
@@ -52,7 +59,7 @@ export default function CartExample({ cartContents, isOpen, onClose }) {
                       <div className="mt-8">
                         <div className="flow-root">
                           <ul role="list" className="-my-6 divide-y divide-gray-200">
-                            {cartContents.map((product) => {
+                            {cartContents.map((product, i) => {
                               var total = (product.quantity * product.price)
                               return (
                                 <li key={product.id} className="flex py-6">
@@ -81,6 +88,7 @@ export default function CartExample({ cartContents, isOpen, onClose }) {
                                         <button
                                           type="button"
                                           className="fonta-medium text-rose-300 hover:text-rose-400"
+                                          onClick={() => handleDeleteItem(product.id)}
                                         >
                                           Remove
                                         </button>
@@ -94,11 +102,13 @@ export default function CartExample({ cartContents, isOpen, onClose }) {
                         </div>
                       </div>
                     </div>
+                    <div>
+                    </div>
 
                     <div className="border-t border-gray-200 px-4 py-6 sm:px-6">
                       <div className="flex justify-between text-base font-medium text-gray-900">
                         <p>Subtotal</p>
-                        <p>$666</p>
+                        <p>${subTotal}</p>
                       </div>
                       <p className="mt-0.5 text-sm text-gray-500">Shipping and taxes calculated at checkout.</p>
                       <div className="mt-6">
